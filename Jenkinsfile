@@ -1,10 +1,10 @@
 pipeline{
-    agnet{label JDK_17}
+    agnet{label 'JDK_17'}
     tiggers{cron ('H/15 * * * *')}
     parameters{
         string (name: 'MAVEN_GOAL', defultValue:'package', discraption:'maven goal')
     }
-}
+
 stages{
         stage('vcs'){
             steps {
@@ -29,5 +29,6 @@ stages{
        
         }
     }
+}
 
 
