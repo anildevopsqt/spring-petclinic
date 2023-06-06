@@ -1,0 +1,33 @@
+pipeline{
+    agnet{label JDK_17}
+    tiggers{cron ('H/15 * * * *')}
+    parameters{
+        string (name: 'MAVEN_GOAL', defultValue:'package', discraption:'maven goal')
+    }
+}
+stages{
+        stage('vcs'){
+            steps {
+            git branch: 'declarative', url: 'https://github.com/anildevopsqt/spring-petclinic.git'
+            }
+        }
+        stage('build'){
+            tools{jdk 'JDK_17'}
+            steps {
+            sh "mvn ${params.MAVEN_GOAL}"
+          }
+        }
+                
+        
+        stage('post build'){
+            steps{
+                archiveArtifacts artifacts: '**/*.jar',
+                                 onlyIfSuccessful: true
+                junit testResults: '**/*.xml',
+                  allowEmptyResults: true
+           }
+       
+        }
+    }
+
+
