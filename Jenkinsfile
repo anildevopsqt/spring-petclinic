@@ -1,6 +1,6 @@
 pipeline{
     agent{label 'JDK_17'}
-    tiggers{cron ('H/15 * * * *')}
+    triggers{cron ('H/15 * * * *')}
     parameters{
         string (name: 'MAVEN_GOAL', defultValue:'package', discraption:'maven goal')
     }
