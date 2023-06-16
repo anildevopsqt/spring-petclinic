@@ -1,5 +1,5 @@
 pipeline{
-    agent{label 'JDK_17'}
+    agent{label 'node_1'}
     parameters{
         string (name:'MAVEN_GOAL', defaultValue:'package', description:'maven goal')
     }
