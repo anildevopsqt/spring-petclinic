@@ -21,8 +21,8 @@ stages{
           stage('sonar analysis') {
             steps {
                 // performing sonarqube analysis with "withSonarQubeENV(<Name of Server configured in Jenkins>)"
-                withSonarQubeEnv('SONAR_token') {
-                    sh 'mvn clean package sonar:sonar -Dsonar.organization=springpetclinic1'
+                withSonarQubeEnv('SONAR_TOKEN') {
+                    sh 'mvn clean package sonar:sonar -Dsonar.organization=springpetclinic1 -Dsonar.project=springpetclinic -Dsonar.projectkey=springpetclinic'
                 }
        }        
   }
