@@ -1,6 +1,5 @@
 pipeline{
     agent{label 'JDK_17'}
-    triggers{cron ('H/15 * * * *')}
     parameters{
         string (name:'MAVEN_GOAL', defaultValue:'package', description:'maven goal')
     }
@@ -19,16 +18,15 @@ stages{
         }
                 
         
-        stage('post build'){
-            steps{
-                archiveArtifacts artifacts: '**/*.jar',
-                                 onlyIfSuccessful: true
-                junit testResults: '**/*.xml',
-                  allowEmptyResults: true
-           }
-       
-        }
-    }
+          stage('sonar analysis') {
+            steps {
+                // performing sonarqube analysis with "withSonarQubeENV(<Name of Server configured in Jenkins>)"
+                withSonarQubeEnv('SONAR_token') {
+                    sh 'mvn clean package sonar:sonar -Dsonar.organization=springpetclinic1'
+                }
+       }        
+  }
+ }
 }
 
 
