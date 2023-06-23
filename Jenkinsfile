@@ -28,7 +28,7 @@ stages{
                     id: "MAVEN_RESOLVER",
                     serverId: "ARTIFACTORY_SERVER",
                     releaseRepo: 'libs-release',
-                    snapshotRepo: 'libs-snapshot'
+                    snapshotRepo: 'libs-snapshot')
         stage('build'){
             tools{jdk 'JDK_17'}
         }
