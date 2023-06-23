@@ -31,24 +31,23 @@ stages{
                     snapshotRepo: 'libs-snapshot'
         stage('build'){
             tools{jdk 'JDK_17'}
-            steps {
-            sh "mvn ${params.MAVEN_GOAL}"
-          }
         }
-          steps {
-
-          }
+            steps{
                 rtMavenRun (
                     tool: 'MAVEN_DEFAULT',
                     pom: 'pom.xml',
                     goals: 'clean install',
                     deployerId: "MAVEN_DEPLOYER"
                 )
-                )
+                
                 rtPublishBuildInfo (
                     serverId: "ARTIFACTORY_SERVER"
                 )
-                //sh "mvn ${params.MAVEN_GOAL}"      
+            }
+                
+        
+            
+               }   //sh "mvn ${params.MAVEN_GOAL}"      
             }
 stage('sonar analysis') {
             steps {
@@ -59,5 +58,4 @@ stage('sonar analysis') {
        }        
   }
  }
-}
-}
+
