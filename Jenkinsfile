@@ -59,5 +59,5 @@ stage('sonar analysis') {
        }        
   }
  }
-}
+
 
