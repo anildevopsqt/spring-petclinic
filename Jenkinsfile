@@ -6,10 +6,11 @@ pipeline{
 
 stages{
         stage('vcs'){
-            // steps {
+             steps {
             git branch: 'main', url: 'https://github.com/anildevopsqt/spring-petclinic.git'
             }
         }
+}
         stage ('Artifactory configuration') {
             steps {
                 rtServer (
