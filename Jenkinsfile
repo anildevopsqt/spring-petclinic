@@ -11,7 +11,7 @@ stages{
             }
         }
 }
-        stage ('Artifactory configuration') {
+    stage ('Artifactory configuration') {
             steps {
                 rtServer (
                     id: "ARTIFACTORY_SERVER",
@@ -51,7 +51,7 @@ stages{
             
                }   //sh "mvn ${params.MAVEN_GOAL}"      
             }
-stage('sonar analysis') {
+stage ('sonar analysis') {
             steps {
                 // performing sonarqube analysis with "withSonarQubeENV(<Name of Server configured in Jenkins>)"
                 withSonarQubeEnv('SONAR_token') {
