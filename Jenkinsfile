@@ -46,7 +46,7 @@ pipeline {
 
                 )
                 rtPublishBuildInfo (
-                    serverId: "ARTIFACTORY_SERVER"
+                    serverId: "jfrog_id"
                 )
                 //sh "mvn ${params.MAVEN_GOAL}"
             }
