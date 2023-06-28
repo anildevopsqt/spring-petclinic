@@ -14,8 +14,8 @@ pipeline {
             steps {
                 rtServer (
                     id: "ARTIFACTORY_SERVER",
-                    url: 'https://devopsqtasu.jfrog.io/artifactoryt',
-                    credentialsId: 'jfrog_id'
+                    url: 'https://qtdevopsasu.jfrog.io/artifactoryt',
+                    credentialsId: 'JFROG_LOCK'
                 )
 
                 rtMavenDeployer (
@@ -46,7 +46,7 @@ pipeline {
 
                 )
                 rtPublishBuildInfo (
-                    serverId: "jfrog_id"
+                    serverId: "ARTIFACTORY_SERVER"
                 )
                 //sh "mvn ${params.MAVEN_GOAL}"
             }
