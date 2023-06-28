@@ -14,7 +14,7 @@ pipeline {
             steps {
                 rtServer (
                     id: "ARTIFACTORY_SERVER",
-                    url: 'https://qtdevopsasu.jfrog.io/artifactoryt',
+                    url: 'https://qtdevopsasu.jfrog.io/artifactory',
                     credentialsId: 'JFROG_LOCK'
                 )
 
